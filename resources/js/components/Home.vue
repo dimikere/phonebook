@@ -16,11 +16,11 @@
     </p>
   </div>
   
-  <a class="panel-block">
+  <a class="panel-block" v-for="item,key in lists">
     <span class="panel-icon">
       <i class="fa fa-book" aria-hidden="true"></i>
     </span>
-    marksheet
+    {{ item.name }}
     <span class="panel-icon column is-1">
       <i class="has-text-danger fa fa-trash" aria-hidden="true"></i>
     </span>
@@ -50,8 +50,15 @@ export default {
   components: {Add},
   data(){
     return{
-      addActive : ''
+      addActive : '',
+      lists: {},
+      errors: {}
     }
+  },
+  mounted(){
+       axios.post('/getData')
+       .then((response) => this.lists = response.data) 
+       .catch((error) => console.log(error))
   },
   methods: {
     openAdd(){

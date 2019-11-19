@@ -31,7 +31,6 @@
 
     </section>
     <footer class="modal-card-foot">
-      {{csfr_field}}
       <button class="button is-success" @click="save">Save changes</button>
       <button class="button" @click="close">Cancel</button>
     </footer>

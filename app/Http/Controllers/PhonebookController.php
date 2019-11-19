@@ -60,6 +60,11 @@ class PhonebookController extends Controller
         //
     }
 
+    public function getData()
+    {
+        return Phonebook::orderBy('name','DESC')->get();
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
