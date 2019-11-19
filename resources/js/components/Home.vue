@@ -1,8 +1,9 @@
 <template>
+<div>
 <nav class="panel column is-offset-2 is-8">
   <p class="panel-heading">
     Vue.js Phonebook App
-    <button class="button is-link is-outlined ">
+    <button class="button is-link is-outlined " @click="openAdd">
       Add new
     </button>
   </p>
@@ -17,11 +18,17 @@
   
   <a class="panel-block">
     <span class="panel-icon">
-      <i class="fas fa-book" aria-hidden="true"></i>
+      <i class="fa fa-book" aria-hidden="true"></i>
     </span>
     marksheet
-    <span class="panel-icon">
-      <i class="fa fa-trash" aria-hidden="true"></i>
+    <span class="panel-icon column is-1">
+      <i class="has-text-danger fa fa-trash" aria-hidden="true"></i>
+    </span>
+    <span class="panel-icon column is-1">
+      <i class="has-text-info fa fa-edit" aria-hidden="true"></i>
+    </span>
+    <span class="panel-icon column is-1">
+      <i class="has-text-primary fa fa-eye" aria-hidden="true"></i>
     </span>
   </a>
   <div class="panel-block">
@@ -30,4 +37,30 @@
     </button>
   </div>
 </nav>
+
+<Add :openmodal='addActive' @closeRequest='close'></Add>
+
+</div>
 </template>
+
+<script>
+let Add = require('./Add.vue').default;
+
+export default {
+  components: {Add},
+  data(){
+    return{
+      addActive : ''
+    }
+  },
+  methods: {
+    openAdd(){
+      this.addActive = 'is-active';
+    },
+    close(){
+      this.addActive = '';
+    }
+  }
+
+}
+</script>
